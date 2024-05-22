@@ -10,6 +10,18 @@
 	model = "Xiaomi AX3600";
 	compatible = "xiaomi,ax3600", "qcom,ipq8074";
 
+	aliases {
+		/* Aliases as required by u-boot to patch MAC addresses */
+		ethernet1 = &dp2;
+		ethernet2 = &dp3;
+		ethernet3 = &dp4;
+		ethernet4 = &dp5;
+	};
+
+	chosen {
+		bootargs-append = " root=/dev/ubiblock0_1";
+	};
+
 	leds {
 		compatible = "gpio-leds";
 
@@ -73,58 +85,39 @@
 	qcom,ath11k-calibration-variant = "Xiaomi-AX3600";
 };
 
-&qca8075_1 {
-	leds {
-		#address-cells = <1>;
-		#size-cells = <0>;
+&qpic_nand {
+	/delete-node/ partitions;
 
-		led@0 {
-			reg = <0>;
-			color = <LED_COLOR_ID_GREEN>;
-			function = LED_FUNCTION_WAN;
-			default-state = "keep";
+	nand@0 {
+		/delete-node/ partitions;
+
+		partitions {
+			compatible = "qcom,smem-part";
 		};
 	};
 };
 
-&qca8075_2 {
-	leds {
-		#address-cells = <1>;
-		#size-cells = <0>;
-
-		led@0 {
-			reg = <0>;
-			color = <LED_COLOR_ID_GREEN>;
-			function = LED_FUNCTION_LAN;
-			default-state = "keep";
-		};
-	};
+&dp2 {
+	/delete-property/ nvmem-cells;
+	/delete-property/ nvmem-cell-names;
 };
 
-&qca8075_3 {
-	leds {
-		#address-cells = <1>;
-		#size-cells = <0>;
-
-		led@0 {
-			reg = <0>;
-			color = <LED_COLOR_ID_GREEN>;
-			function = LED_FUNCTION_LAN;
-			default-state = "keep";
-		};
-	};
+&dp3 {
+	/delete-property/ nvmem-cells;
+	/delete-property/ nvmem-cell-names;
 };
 
-&qca8075_4 {
-	leds {
-		#address-cells = <1>;
-		#size-cells = <0>;
+&dp4 {
+	/delete-property/ nvmem-cells;
+	/delete-property/ nvmem-cell-names;
+};
 
-		led@0 {
-			reg = <0>;
-			color = <LED_COLOR_ID_GREEN>;
-			function = LED_FUNCTION_LAN;
-			default-state = "keep";
-		};
-	};
+&dp5 {
+	/delete-property/ nvmem-cells;
+	/delete-property/ nvmem-cell-names;
+};
+
+&wifi0 {
+	/delete-property/ nvmem-cells;
+	/delete-property/ nvmem-cell-names;
 };
