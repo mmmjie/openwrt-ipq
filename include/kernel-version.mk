@@ -25,6 +25,10 @@ endif
 remove_uri_prefix=$(subst git://,,$(subst http://,,$(subst https://,,$(1))))
 sanitize_uri=$(call qstrip,$(subst @,_,$(subst :,_,$(subst .,_,$(subst -,_,$(subst /,_,$(1)))))))
 
+# Directly set LINUX_VERSION to the specific desired version
+LINUX_VERSION:=6.6.30~99515ee2bda771c87d2079f34d2b8a96-r1
+
+# The rest of the file remains unchanged
 ifneq ($(call qstrip,$(CONFIG_KERNEL_GIT_CLONE_URI)),)
   LINUX_VERSION:=$(call sanitize_uri,$(call remove_uri_prefix,$(CONFIG_KERNEL_GIT_CLONE_URI)))
   ifeq ($(call qstrip,$(CONFIG_KERNEL_GIT_REF)),)
