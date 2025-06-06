@@ -65,7 +65,6 @@
 	"@OPENWRT": [
 		"https://sources.cdn.openwrt.org",
 		"https://sources.openwrt.org",
-		"https://mirror2.openwrt.org/sources",
-		"https://cdn.kernel.org/pub/linux/kernel/v6.x"
+		"https://mirror2.openwrt.org/sources"
 	]
 }
