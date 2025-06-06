@@ -49,3 +49,4 @@ KERNEL_PATCHVER ?= $(KERNEL)
 # disable the md5sum check for unknown kernel versions
 LINUX_KERNEL_HASH:=$(LINUX_KERNEL_HASH-$(strip $(LINUX_VERSION)))
 LINUX_KERNEL_HASH?=x
+LINUX_KERNEL_HASH := c9b7b3cd1046efb0034862a39419ff9f
